@@ -1,0 +1,44 @@
+<style>
+  body {
+    font-family: "Amazon Ember", "Times New Roman", Times, serif;
+    padding: 1em;
+  }
+  h2 {
+    color: #414d5c;
+    font-size: 18px;
+    margin-bottom: 0;
+  }
+  p {
+    color: #000716;
+    margin-top: 0;
+    font-size: 14px;
+    font-weight: normal;
+  }
+</style>
+<div>
+  <h2>Selected text</h2>
+  <p id="textItem"></p>
+  <h2>Contrast ratio</h2>
+  <p id="ratio"></p>
+  <h2>AA</h2>
+  <p id="aa"></p>
+  <h2>AAA</h2>
+  <p id="aaa"></p>
+</div>
+<script>
+  const text = document.querySelector("#textItem");
+  const ratio = document.querySelector("#ratio");
+  const aa = document.querySelector("#aa");
+  const aaa = document.querySelector("#aaa");
+
+  window.onmessage = (msg) => {
+    text.textContent = msg.data.pluginMessage.text;
+    fetch(msg.data.pluginMessage.apiString)
+      .then((response) => response.json())
+      .then((data) => {
+        ratio.textContent = data.ratio;
+        aa.textContent = data.AA;
+        aaa.textContent = data.AAA;
+      });
+  };
+</script>
