@@ -1,5 +1,5 @@
 // This plugin checks contrast for all text in the current file
-// Author: portiao@amazon.com
+// Author: gportia@gmail.com
 // Last updated: 4 Jan 2022
 
 // Helper functions
